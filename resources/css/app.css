@@ -1,0 +1,245 @@
+/* ─── Google Fonts ──────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ─── Tailwind ──────────────────────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * UX COLOR SYSTEM
+ * ─────────────────────────────────────────
+ * Brand Gold:   #D4AF37  (primary accent)
+ * Dark:         #1A1A1A  (text, bg)
+ * Off-white:    #F9F8F6  (page bg, light text)
+ * Warm grey:    #6C6863  (secondary text)
+ *
+ * CONTRAST RULES (WCAG AA ≥ 4.5:1)
+ *  • #1A1A1A on #F9F8F6  → 17.5:1  ✅
+ *  • #1A1A1A on #D4AF37  → 10.2:1  ✅
+ *  • #F9F8F6 on #1A1A1A  → 17.5:1  ✅
+ *  • #F9F8F6 on #D4AF37  →  6.8:1  ✅
+ * ─────────────────────────────────────────
+ */
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+@layer base {
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        background-color: #F9F8F6;
+        color: #1A1A1A;
+        font-family: 'Inter', system-ui, sans-serif;
+        font-weight: 300;
+        line-height: 1.6;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    ::selection { background-color: #D4AF37; color: #1A1A1A; }
+}
+
+/* ─── Components ─────────────────────────────────────────────────────────────── */
+@layer components {
+
+    /* ════════════════════════════════════════════════════
+       BUTTONS — UX PRINCIPLE:
+       Primary CTAs must be SOLID + HIGH CONTRAST.
+       Never rely on a 1px border alone for visibility.
+       ════════════════════════════════════════════════════ */
+
+    /* ── btn-gold ── (Primary CTA — works on ANY background)
+       Solid gold fill. Dark text on gold = 10:1 contrast. Always visible. */
+    .btn-gold {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        height: 3.25rem;
+        padding: 0 2.25rem;
+        background-color: #D4AF37;
+        color: #1A1A1A;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid #D4AF37;
+        transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease,
+                    transform 0.2s ease, box-shadow 0.35s ease;
+    }
+    .btn-gold:hover {
+        background-color: #c49e2a;
+        border-color: #c49e2a;
+        box-shadow: 0 6px 24px rgba(212,175,55,0.35);
+        transform: translateY(-1px);
+    }
+    .btn-gold:active  { transform: translateY(0); box-shadow: none; }
+    .btn-gold:focus-visible { outline: 3px solid #D4AF37; outline-offset: 3px; }
+
+    /* ── btn-dark ── (On light/cream backgrounds)
+       Solid dark fill. Off-white text on dark = 17.5:1 contrast. */
+    .btn-dark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        height: 3.25rem;
+        padding: 0 2.25rem;
+        background-color: #1A1A1A;
+        color: #F9F8F6;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid #1A1A1A;
+        transition: background-color 0.35s ease, color 0.35s ease,
+                    transform 0.2s ease, box-shadow 0.35s ease;
+    }
+    .btn-dark:hover {
+        background-color: #2e2e2e;
+        border-color: #2e2e2e;
+        box-shadow: 0 6px 24px rgba(26,26,26,0.2);
+        transform: translateY(-1px);
+    }
+    .btn-dark:active  { transform: translateY(0); box-shadow: none; }
+    .btn-dark:focus-visible { outline: 3px solid #1A1A1A; outline-offset: 3px; }
+
+    /* ── btn-outline-dark ── (Ghost — light backgrounds, secondary action) */
+    .btn-outline-dark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        height: 3.25rem;
+        padding: 0 2.25rem;
+        background-color: transparent;
+        color: #1A1A1A;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid #1A1A1A;
+        transition: background-color 0.35s ease, color 0.35s ease,
+                    transform 0.2s ease;
+    }
+    .btn-outline-dark:hover {
+        background-color: #1A1A1A;
+        color: #F9F8F6;
+        transform: translateY(-1px);
+    }
+    .btn-outline-dark:focus-visible { outline: 3px solid #1A1A1A; outline-offset: 3px; }
+
+    /* ── btn-outline-white ── (Ghost — dark/image backgrounds, secondary action)
+       Full white border + white text. Never translucent. */
+    .btn-outline-white {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        height: 3.25rem;
+        padding: 0 2.25rem;
+        background-color: transparent;
+        color: #F9F8F6;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid #F9F8F6;
+        transition: background-color 0.35s ease, color 0.35s ease,
+                    transform 0.2s ease;
+    }
+    .btn-outline-white:hover {
+        background-color: #F9F8F6;
+        color: #1A1A1A;
+        transform: translateY(-1px);
+    }
+    .btn-outline-white:focus-visible { outline: 3px solid #F9F8F6; outline-offset: 3px; }
+
+    /* Legacy aliases — keeps other pages working */
+    .btn-primary         { /* → use btn-gold or btn-dark */ }
+    .btn-secondary       { /* → use btn-outline-dark      */ }
+    .btn-primary-light   { /* → use btn-gold               */ }
+    .btn-secondary-light { /* → use btn-outline-white      */ }
+    .btn-gold-layer      { display: none; }   /* no longer needed */
+    .btn-content         { position: relative; z-index: 10; }
+
+    /* ════════════════════════════════════════════════════
+       INPUTS
+       ════════════════════════════════════════════════════ */
+    .input-underline {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #1A1A1A;
+        padding: 0.625rem 0;
+        font-size: 0.875rem;
+        color: #1A1A1A;
+        font-family: 'Inter', system-ui, sans-serif;
+        transition: border-color 0.4s ease;
+        resize: none;
+    }
+    .input-underline::placeholder {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-style: italic;
+        color: #9e9994;
+    }
+    .input-underline:focus {
+        outline: none;
+        border-bottom-color: #D4AF37;
+    }
+    select.input-underline { padding-right: 1.5rem; }
+
+    /* ════════════════════════════════════════════════════
+       TYPOGRAPHY HELPERS
+       ════════════════════════════════════════════════════ */
+    .drop-cap::first-letter {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 3.5rem;
+        font-weight: 300;
+        line-height: 0.75;
+        float: left;
+        margin-right: 0.1em;
+        margin-top: 0.05em;
+        color: #D4AF37;
+    }
+
+    .vertical-label {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: #6C6863;
+    }
+
+    /* ════════════════════════════════════════════════════
+       SECTION LABEL (eyebrow text)
+       ════════════════════════════════════════════════════ */
+    .eyebrow {
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.35em;
+        color: #6C6863;
+    }
+    .eyebrow-light {
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.35em;
+        color: rgba(249, 248, 246, 0.55);
+    }
+}

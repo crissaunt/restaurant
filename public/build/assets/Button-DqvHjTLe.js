@@ -1,0 +1,6 @@
+import{c as i}from"./x-DgbDk4KN.js";import{j as t}from"./app-Bu0rlaEv.js";/**
+ * @license lucide-react v0.415.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const p=i("CircleCheckBig",[["path",{d:"M22 11.08V12a10 10 0 1 1-5.93-9.14",key:"g774vq"}],["path",{d:"m9 11 3 3L22 4",key:"1pflzl"}]]);function u({as:e="input",label:s,id:a,className:r="",rows:n=4,...o}){const c=e;return t.jsxs("div",{className:"flex flex-col gap-1",children:[s&&t.jsx("label",{htmlFor:a,className:"text-[10px] uppercase tracking-[0.25em] text-[#6C6863] font-medium",children:s}),t.jsx(c,{id:a,rows:e==="textarea"?n:void 0,className:`input-underline ${r}`,...o})]})}function m({children:e,variant:s="primary",className:a="",type:r="button",onClick:n,disabled:o}){return s==="primary"?t.jsxs("button",{type:r,onClick:n,disabled:o,className:`btn-primary disabled:opacity-50 disabled:cursor-not-allowed ${a}`,children:[t.jsx("span",{className:"btn-gold-layer","aria-hidden":"true"}),t.jsx("span",{className:"btn-content",children:e})]}):t.jsx("button",{type:r,onClick:n,disabled:o,className:`btn-secondary disabled:opacity-50 disabled:cursor-not-allowed ${a}`,children:e})}export{m as B,p as C,u as I};
