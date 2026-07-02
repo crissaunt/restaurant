@@ -19,7 +19,7 @@ COPY --from=assets-builder /app/public/build ./public/build
 
 # Install PHP dependencies
 ENV COMPOSER_ALLOW_SUPERUSER 1
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
 # Image config
 ENV SKIP_COMPOSER 1
